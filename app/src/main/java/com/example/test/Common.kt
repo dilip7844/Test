@@ -13,14 +13,13 @@ import android.view.animation.RotateAnimation
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.textfield.TextInputLayout
 import java.util.*
 import kotlin.math.roundToInt
 
-
 object Common {
-
     @JvmStatic
     fun validateString(string: String?, message: String?): String? {
         return if (string != "null") {
@@ -54,11 +53,9 @@ object Common {
         Toast.makeText(AppConfig.instance.applicationContext, msg, Toast.LENGTH_SHORT).show()
     }
 
-
     fun isMobileValid(mobile: String): Boolean {
         return mobile.length == 10
     }
-
 
     fun openFragment(activity: AppCompatActivity, fragment: DialogFragment) {
         activity.let {
@@ -68,7 +65,6 @@ object Common {
             else fragmentTransaction.show(fragment).commit()
         }
     }
-
 
     fun isEmpty(textInputLayout: TextInputLayout, errMsg: String?): Boolean {
         return if (textInputLayout.editText?.text?.trim().toString() == "") {
@@ -84,6 +80,11 @@ object Common {
         }
     }
 
+    @JvmStatic
+    @BindingAdapter("load_bitmap")
+    fun loadBitmap(imageView: ImageView, drawable: Drawable?) {
+        imageView.setImageDrawable(drawable)
+    }
 
     fun Any?.toString(): String {
         //Log.d("Common", "toString: ")
@@ -99,7 +100,6 @@ object Common {
         return ContextCompat.getDrawable(context, drawable)
     }
 
-
     fun getRotateAnimation(): Animation {
         val animation: Animation = RotateAnimation(
             0.0f,
@@ -114,7 +114,6 @@ object Common {
         return animation
     }
 
-
     fun convertDpToPixel(dp: Int): Int {
         return (dp * (AppConfig.instance.resources.displayMetrics.densityDpi / 160f)).roundToInt()
     }
@@ -128,8 +127,6 @@ object Common {
             drawable.start()
             return drawable
         }*/
-
-
     fun enableLayout(enable: Boolean, viewGroup: ViewGroup) {
         viewGroup.isEnabled = enable
         for (i in 0 until viewGroup.childCount) {
@@ -144,7 +141,6 @@ object Common {
         }
     }
 
-
     fun getWidth(): Int {
         val displayMetrics = AppConfig.instance.resources.displayMetrics
         return displayMetrics.widthPixels
@@ -154,7 +150,6 @@ object Common {
         val displayMetrics = AppConfig.instance.resources.displayMetrics
         return displayMetrics.heightPixels
     }
-
 
     fun createLoadingDialog(activity: AppCompatActivity): ProgressDialog {
         var progressDialog = ProgressDialog(activity, R.style.ProgressDialogStyle)
