@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="30dp">
@@ -39,28 +40,41 @@
             android:maxLength="10" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/btnChangeMobileNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="10dp"
+        android:text="Change Mobile No"
+        android:textColor="@color/colorAccent"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutOTP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="OTP">
+
+        android:hint="OTP"
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etOTP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="6"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            android:maxLength="6" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="Send OTP" />
 
 </LinearLayout>
