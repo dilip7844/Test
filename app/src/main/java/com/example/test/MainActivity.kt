@@ -4,8 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.test.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -22,6 +25,19 @@ class MainActivity : AppCompatActivity() {
         initTabs()
         getMobiles()
         getLaptops()
+        var viewModel = ViewModelProvider(this).get(VModel::class.java)
+
+        viewModel.repo?.getCartItems()?.observe(this) {
+            if (it.isEmpty())
+                binding.layoutCheckout.visibility = GONE
+            else {
+                binding.layoutCheckout.visibility = VISIBLE
+                binding.tvCartItems.text = "${it.size} items"
+            }
+        }
+        binding.layoutCheckout.setOnClickListener {
+            Common.openFragment(this@MainActivity, CartFragment())
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -32,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menuCart -> {
+                Common.openFragment(this@MainActivity, CartFragment())
             }
 
             R.id.menuLogout -> {

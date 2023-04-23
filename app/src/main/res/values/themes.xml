@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -12,6 +12,8 @@
         <item name="materialButtonStyle">@style/ButtonStyle</item>
         <item name="textInputStyle">@style/TextInputStyle</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
     </style>
 
     <style name="TextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
@@ -26,7 +28,6 @@
         <item name="boxBackgroundColor">@color/gray_light</item>
         <item name="boxStrokeWidth">0dp</item>
     </style>
-
 
     <style name="TabStyle" parent="Widget.MaterialComponents.TabLayout">
         <item name="tabIndicatorAnimationMode">elastic</item>
@@ -43,7 +44,6 @@
         <item name="tabRippleColor">@color/gray_dark</item>
         <item name="tabIndicatorFullWidth">false</item>
     </style>
-
 
     <style name="ButtonStyle">
         <item name="android:layout_width">match_parent</item>
@@ -71,7 +71,6 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/colorSecondary</item>
     </style>
-
 
     <style name="ProgressDialogStyle">
         <item name="android:textColor">@color/colorPrimary</item>

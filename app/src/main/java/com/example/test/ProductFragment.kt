@@ -36,6 +36,7 @@ class ProductFragment : Fragment() {
         init {
             itemProductBinding.root.clipToOutline = true
             itemProductBinding.btnAddToCart.setOnClickListener {
+                Repo.addToCart(data?.get(adapterPosition)!!)
             }
         }
     }
